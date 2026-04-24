@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuestPass SG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: #060810;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    #root {
+      height: 100%;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 0px; height: 0px; }
+
+    /* Global keyframes */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 8px currentColor; }
+      50% { box-shadow: 0 0 20px currentColor; }
+    }
+    @keyframes slide-up {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes pop-in {
+      0% { transform: scale(0.7); opacity: 0; }
+      70% { transform: scale(1.08); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    button { outline: none; -webkit-tap-highlight-color: transparent; }
+
+    /* Ensure absolute stacking works in phone shell */
+    #root > div > div > div {
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+
+  <template id="__bundler_thumbnail" data-bg-color="#060810">
+    <svg viewBox="0 0 430 900" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect width="430" height="900" fill="#060810"/>
+      <!-- Glow -->
+      <ellipse cx="215" cy="320" rx="180" ry="120" fill="#e040a0" opacity="0.12"/>
+      <!-- Singapore island shape simplified -->
+      <path d="M 60,340 C 70,290 120,265 175,260 C 230,255 275,258 310,265 C 345,272 375,290 385,315 C 392,335 375,365 345,375 C 310,386 265,390 225,388 C 185,390 145,385 110,375 C 75,364 55,358 60,340 Z" fill="#1e2540" stroke="#3d8ff5" stroke-width="1.5" opacity="0.8"/>
+      <!-- Neighborhood dots -->
+      <circle cx="175" cy="328" r="8" fill="#f0bc42" opacity="0.9"/>
+      <circle cx="155" cy="308" r="6" fill="#e040a0" opacity="0.9"/>
+      <circle cx="240" cy="305" r="6" fill="#7c4dcc" opacity="0.9"/>
+      <circle cx="140" cy="340" r="6" fill="#2ecb82" opacity="0.9"/>
+      <circle cx="248" cy="322" r="7" fill="#3d8ff5" opacity="0.9"/>
+      <!-- Logo symbol -->
+      <text x="215" y="195" text-anchor="middle" font-size="48" fill="#e040a0" opacity="0.9" font-family="sans-serif">◈</text>
+      <!-- Title text -->
+      <rect x="90" y="430" width="250" height="32" rx="6" fill="#f0f2ff" opacity="0.08"/>
+      <rect x="120" y="476" width="190" height="18" rx="5" fill="#f0f2ff" opacity="0.05"/>
+      <!-- Quest cards -->
+      <rect x="24" y="520" width="382" height="72" rx="14" fill="#141626" stroke="#f0bc4422" stroke-width="1"/>
+      <rect x="24" y="608" width="382" height="72" rx="14" fill="#141626" stroke="#2ecb8222" stroke-width="1"/>
+      <rect x="24" y="696" width="382" height="72" rx="14" fill="#141626" stroke="#7c4dcc22" stroke-width="1"/>
+    </svg>
+  </template>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React 18 + Babel -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+    integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+    integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+    integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+    crossorigin="anonymous"></script>
+
+  <!-- GrabMaps API adapter (stub — replace bodies with real SDK calls) -->
+  <script src="js/grabmaps.js"></script>
+
+  <!-- Game data (plain JS, no Babel needed) -->
+  <script src="js/data.js"></script>
+
+  <!-- Screen components (Babel JSX, in dependency order) -->
+  <script type="text/babel" src="js/FlightSetup.jsx"></script>
+  <script type="text/babel" src="js/FlightSettingsModal.jsx"></script>
+  <script type="text/babel" src="js/QuestMap.jsx"></script>
+  <script type="text/babel" src="js/QuestSelect.jsx"></script>
+  <script type="text/babel" src="js/ActiveQuest.jsx"></script>
+  <script type="text/babel" src="js/StopUnlocked.jsx"></script>
+  <script type="text/babel" src="js/Passport.jsx"></script>
+  <script type="text/babel" src="js/App.jsx"></script>
+</body>
+</html>
