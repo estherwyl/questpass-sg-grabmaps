@@ -42,4 +42,4 @@ Important:
 
 ## Project status
 
-Hackathon MVP prototype.
+GrabMaps Hackathon MVP prototype.
